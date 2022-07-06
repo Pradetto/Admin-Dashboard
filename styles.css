@@ -1,16 +1,19 @@
 :root{
+    --logoGap: .5rem;
+
     /* sidebar variables */
     --sidebarBackgroundColor: #87CEEB;
     --sidebarFontColor:white;
 
-    --sidebarTitleFontSize: 2rem;
-    --sidebarFontSize: 26px;
+    --sidebarTitleFontSize: 2.5rem;
+    --sidebarFontSize: 1.5rem;
 
-    --smallLogoSize:24px;
-    --largeLogoSize: 2rem;
+    --smallLogoSize:1.5rem;
+    --largeLogoSize: 2.5rem;
+    
 }
 
-body{
+body {
     margin: 0;
 }
 
@@ -22,19 +25,27 @@ a:active {
     color: inherit;
 }
 
+/* Initial Setup */
+/* Be careful of auto here */
 .container {
+    min-height: 100vh;
+
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: auto 4fr;
     grid-template-rows: 1fr 5fr;
 }
 
 .container>div{
-    border: 1px solid var(--sidebarBackgroundColor);
+    border: 1px solid black;
 }
 
 .header{
     grid-row: 1/2;
     grid-column: 2/3;
+    display: grid;
+    /* grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; */
+    grid-template: auto 1fr / 2fr 1fr;
 }
 
 .sidebar{
@@ -43,8 +54,10 @@ a:active {
 
     background-color: var(--sidebarBackgroundColor);
 
-    display: grid;
-    align-items: center;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .main{
@@ -52,14 +65,25 @@ a:active {
 }
 
 /* SideBar CSS */
+.dashLink,.navLink,.controlsLink{
+    display: flex;
+    align-items:center;
+    gap: var(--logoGap);
+}
+
 ul.navList,ul.controlsList {
     list-style: none;
+    padding: 0;
 }
 
 li.navItem,li.controlsItem {
     font-size: var(--sidebarFontSize);
     color: var(--sidebarFontColor);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    /* I can add 0px as a second variabel to remove the indentation here */
 }
 
 .dashLink>span{
@@ -73,4 +97,17 @@ li.navItem,li.controlsItem {
 
 .largeLogo{
     height: var(--largeLogoSize);
+}
+
+/* Header CSS */
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--logoGap);
+}
+
+.searchContainer input{
+    flex-grow: 1;
 }
